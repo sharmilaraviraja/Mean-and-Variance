@@ -39,24 +39,55 @@ It shows the distance of a random variable from its mean. It is calcualted as
 ![image](https://user-images.githubusercontent.com/103921593/229993174-5b67e57e-3e01-4ac4-9f83-410a932b22bf.png)
 # Program :
 ```
+# Mean and Variance of a Discrete Distribution
+
+# Input values (arrival of objects)
 x = [0, 1, 2, 3, 4]
-p = [0.1, 0.2, 0.3, 0.25, 0.15]
+
+# Corresponding frequencies
+f = [5, 10, 15, 10, 5]
+
+# Total frequency
+N = sum(f)
+
+print("Total Frequency (N) =", N)
+
+# Probability Distribution
+p = []
+print("\nProbability Distribution:")
+print("x\tf\tP(x)=f/N")
+
+for i in range(len(x)):
+    prob = f[i] / N
+    p.append(prob)
+    print(f"{x[i]}\t{f[i]}\t{prob:.4f}")
+
+# Mean Calculation
 mean = 0
+print("\nCalculation of Mean:")
+print("x\tP(x)\tx*P(x)")
+
 for i in range(len(x)):
-    mean = mean + (x[i] * p[i)]2 = 0
+    xp = x[i] * p[i]
+    mean += xp
+    print(f"{x[i]}\t{p[i]:.4f}\t{xp:.4f}")
+
+print("\nMean =", round(mean, 4))
+
+# Variance Calculation
+variance = 0
+print("\nCalculation of Variance:")
+print("x\tP(x)\t(x-Mean)^2\tP(x)*(x-Mean)^2")
+
 for i in range(len(x)):
-    ex2 = ex2 + ((x[i] ** 2) * p[i])
-variance = ex2 - (mean ** 2)
-print("Discrete Probability Distribution")
-print("--------------------------------")
-print("X :", x)
-print("P(X) :", p)
-print("\nMean =", mean)
-print("Variance =", variance)
+    term = ((x[i] - mean) ** 2)
+    vp = p[i] * term
+    variance += vp
+    print(f"{x[i]}\t{p[i]:.4f}\t{term:.4f}\t\t{vp:.4f}")
+
+print("\nVariance =", round(variance, 4))
 ```
 # Output : 
-<img width="391" height="164" alt="image" src="https://github.com/user-attachments/assets/6659b83b-290f-4a4e-b77f-f0cb8fc46c31" />
+<img width="228" height="331" alt="image" src="https://github.com/user-attachments/assets/506693d0-1bb1-4c12-8d0a-0f5e132f0f4b" />
 
-# Results :
-The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
 
